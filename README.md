@@ -1,65 +1,56 @@
 <div align="center">
 
-  <!-- Cosmic Shiva & Tech Geek SVG Centerpiece -->
-  <img src="./shiva-cosmic.svg" width="580" alt="rosnnn's Cosmic Shiva Tech Animation" />
+  <!-- Cozy Lo-Fi Sunset & Cassette Player SVG Centerpiece -->
+  <img src="./lofi-chill.svg" width="620" alt="rosnnn's Cozy Lo-Fi Code Deck" />
 
   <br/><br/>
   
-  <h1>🔱 SYSTEM INITIALIZED // ADIYOGI_CORE</h1>
+  <h1>☕ COZY CODE DECK: rosnnn</h1>
   
   <p>
-    <i>Merging ancient spiritual dynamics with quantum computing architectures.</i>
+    <i>lofi beats, warm coffee, and smooth code iterations.</i>
   </p>
 
-  <!-- High-Tech Quick System Metrics -->
+  <!-- Cozy Badges -->
   <p>
-    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=QUANTUM_SYNC&style=for-the-badge&color=00F0FF&labelColor=05060A" alt="Followers" /></a>
-    <a href="https://github.com/rosnnn?tab=repositories"><img src="https://img.shields.io/github/stars/rosnnn?style=for-the-badge&color=FF007F&labelColor=05060A" alt="Stars" /></a>
+    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=COZY_MUTUALS&style=for-the-badge&color=FFEEAD&labelColor=0F0E17" alt="Followers" /></a>
+    <a href="https://github.com/rosnnn?tab=repositories"><img src="https://img.shields.io/github/stars/rosnnn?style=for-the-badge&color=FF8E9F&labelColor=0F0E17" alt="Stars" /></a>
   </p>
 
 </div>
 
 ---
 
-## 🕉️ Cosmic Variables
-
-```yaml
-# Shiva Quantum core metrics
-developer: rosnnn
-status: Meditating in the Cloud 📿
-frequency: 963Hz # Solfeggio Cosmic Frequency
-kernel: Adiyogi_V9.04
-active_subsystems:
-  - Tandav_Dynamics (Animation & Creative Logic)
-  - Third_Eye_Scanning (Code Compilations)
-  - Trishul_Grid_Lock (Secure Deployments)
-  - Damru_Visualizer (Aesthetic Styling & UI/UX)
-```
+## 🎵 Tracklist (System Specifications)
 
 ```text
-       ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् ।
-    उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय मामृतात् ॥
+Track  //  Title                 //  Length  //  Status
+-----------------------------------------------------------
+[01]   //  about_rosnnn.sh       //  03:15   //  [MEDITATIVE]
+[02]   //  core_tech_stack.json  //  04:22   //  [COMPILING]
+[03]   //  relaxing_waves.mp3    //  05:40   //  [LOOPING]
+```
+
+### 📁 track_02 // core_tech_stack.json
+```json
+{
+  "frontend": ["JavaScript", "TypeScript", "React", "Next.js", "HTML5 Canvas"],
+  "backend": ["Node.js", "Express.js", "APIs"],
+  "design": ["Figma", "SVG Motion Design", "Cozy Art Directions"]
+}
 ```
 
 <br/>
 
-## 🛠️ The Cyber Deck Stack
+## 📡 Tune in to my Signal
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=js,ts,react,nextjs,nodejs,py,threejs,html,css,git,vscode,figma&perline=6" alt="Tech Stack" />
-</div>
-
-<br/>
-
-## 📡 Transmit Signals
-
-<div align="center">
-  <a href="mailto:your-email@example.com"><img src="https://img.shields.io/badge/Transmit_Email-00F0FF?style=for-the-badge&logo=gmail&logoColor=05060A" alt="Email" /></a>
-  <a href="https://linkedin.com/in/your-profile"><img src="https://img.shields.io/badge/LinkedIn_Signal-FF007F?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="mailto:your-email@example.com"><img src="https://img.shields.io/badge/Transmit_Signal-FFAD60?style=for-the-badge&logo=gmail&logoColor=0F0E17" alt="Email" /></a>
+  <a href="https://linkedin.com/in/your-profile"><img src="https://img.shields.io/badge/LinkedIn_Link-FF8E9F?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
 </div>
 
 <br/>
 
 <div align="center">
-  <sub>All systems checked. Powered by 🔱 Antigravity</sub>
+  <sub>Tape player fully active. Powered by ☕ Antigravity</sub>
 </div>
