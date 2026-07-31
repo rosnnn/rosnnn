@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <!-- Fonts and CDATA CSS -->
+    <style><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Outfit:wght@400;700;900&display=swap');
+      
+      svg {
+        background-color: #050508;
+        font-family: 'Fira Code', monospace;
+      }
+      
+      /* Glowing elements */
+      .glow-yellow {
+        filter: drop-shadow(0 0 8px #FFC400);
+      }
+      .glow-dark {
+        filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.7));
+      }
+      
+      /* --- ANIMATIONS --- */
+      
+      /* Bat Signal Breathing/Pulsing Glow */
+      @keyframes signal-pulse {
+        0%, 100% {
+          stroke: #FFAB00;
+          filter: drop-shadow(0 0 4px rgba(255, 171, 0, 0.45));
+          opacity: 0.8;
+          stroke-width: 1.5px;
+        }
+        50% {
+          stroke: #FFD700;
+          filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.9));
+          opacity: 1;
+          stroke-width: 2.8px;
+        }
+      }
+      .bat-outline {
+        animation: signal-pulse 4s ease-in-out infinite;
+      }
+      
+      /* HUD Rotation (Faint target dial) */
+      @keyframes spin-cw {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes spin-ccw {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+      }
+      .hud-cw {
+        transform-origin: 300px 175px;
+        animation: spin-cw 40s linear infinite;
+      }
+      .hud-ccw {
+        transform-origin: 300px 175px;
+        animation: spin-ccw 30s linear infinite;
+      }
+      
+      /* Flying Bats (Outward from center) */
+      @keyframes bat-fly-1 {
+        0% { transform: translate(300px, 175px) scale(0.1); opacity: 0; }
+        15% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translate(120px, 60px) scale(1.1) rotate(-15deg); opacity: 0; }
+      }
+      @keyframes bat-fly-2 {
+        0% { transform: translate(300px, 175px) scale(0.1); opacity: 0; }
+        15% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translate(460px, 80px) scale(1.2) rotate(20deg); opacity: 0; }
+      }
+      @keyframes bat-fly-3 {
+        0% { transform: translate(300px, 175px) scale(0.1); opacity: 0; }
+        15% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translate(140px, 280px) scale(1) rotate(-10deg); opacity: 0; }
+      }
+      @keyframes bat-fly-4 {
+        0% { transform: translate(300px, 175px) scale(0.1); opacity: 0; }
+        15% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translate(440px, 260px) scale(1.1) rotate(15deg); opacity: 0; }
+      }
+      @keyframes bat-fly-5 {
+        0% { transform: translate(300px, 175px) scale(0.1); opacity: 0; }
+        15% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translate(300px, 40px) scale(1.3) rotate(-5deg); opacity: 0; }
+      }
+      
+      .mini-bat {
+        fill: #0F0F14;
+        stroke: rgba(255, 171, 0, 0.25);
+        stroke-width: 0.5px;
+        opacity: 0;
+      }
+      
+      .b1 { animation: bat-fly-1 6s ease-in-out infinite; animation-delay: 0s; }
+      .b2 { animation: bat-fly-2 6s ease-in-out infinite; animation-delay: 1.2s; }
+      .b3 { animation: bat-fly-3 6s ease-in-out infinite; animation-delay: 2.4s; }
+      .b4 { animation: bat-fly-4 6s ease-in-out infinite; animation-delay: 3.6s; }
+      .b5 { animation: bat-fly-5 6s ease-in-out infinite; animation-delay: 4.8s; }
+      
+      /* Glitch diagnostic text */
+      @keyframes diag-glitch {
+        0%, 100% { transform: translate(0); text-shadow: none; }
+        94% { transform: translate(1px, -0.5px); text-shadow: -1px 0 rgba(255,171,0,0.5), 1px 0 rgba(255,255,255,0.2); }
+        96% { transform: translate(-1px, 0.5px); text-shadow: 1px 0 rgba(255,171,0,0.5), -1px 0 rgba(255,255,255,0.2); }
+        98% { transform: translate(0); }
+      }
+      .glitch {
+        animation: diag-glitch 6s step-end infinite;
+      }
+    ]]></style>
+
+    <!-- Faint Searchlight beam background gradient -->
+    <radialGradient id="searchlight" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFC400" stop-opacity="0.14" />
+      <stop offset="70%" stop-color="#FFAB00" stop-opacity="0.03" />
+      <stop offset="100%" stop-color="#050508" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- BACKGROUND: Technical grid overlay -->
+  <g stroke="#101018" stroke-width="0.8" opacity="0.6">
+    <line x1="100" y1="0" x2="100" y2="350" />
+    <line x1="200" y1="0" x2="200" y2="350" />
+    <line x1="300" y1="0" x2="300" y2="350" />
+    <line x1="400" y1="0" x2="400" y2="350" />
+    <line x1="500" y1="0" x2="500" y2="350" />
+    <line x1="0" y1="87" x2="600" y2="87" />
+    <line x1="0" y1="175" x2="600" y2="175" />
+    <line x1="0" y1="262" x2="600" y2="262" />
+  </g>
+
+  <!-- BACKGROUND SEARCHLIGHT CONE -->
+  <circle cx="300" cy="175" r="150" fill="url(#searchlight)" />
+
+  <!-- BACKGROUND DIALS (Faint target circles) -->
+  <g opacity="0.15">
+    <circle cx="300" cy="175" r="120" fill="none" stroke="#FFC400" stroke-width="0.8" stroke-dasharray="8 12" class="hud-cw" />
+    <circle cx="300" cy="175" r="105" fill="none" stroke="#FFFFFF" stroke-width="0.5" stroke-dasharray="2 6" class="hud-ccw" />
+    <circle cx="300" cy="175" r="85" fill="none" stroke="#FFC400" stroke-width="0.8" stroke-dasharray="40 10 10 10" class="hud-cw" />
+  </g>
+
+  <!-- FLYING BATS (Spawn from behind the signal) -->
+  <!-- Bat shape is centered at origin (0,0) and animated/positioned by classes -->
+  <path d="M 0,-4 L -4,-2 C -4,-2 -8,-2 -12,-2 C -22,-1 -44,0 -80,1 C -60,8 -48,12 -30,12 C -22,12 -16,10 -10,7 L 0,22 L 10,7 C 16,10 22,12 30,12 C 48,12 60,8 80,1 C 44,0 22,-1 12,-2 C 8,-2 4,-2 4,-2 Z" class="mini-bat b1" />
+  <path d="M 0,-4 L -4,-2 C -4,-2 -8,-2 -12,-2 C -22,-1 -44,0 -80,1 C -60,8 -48,12 -30,12 C -22,12 -16,10 -10,7 L 0,22 L 10,7 C 16,10 22,12 30,12 C 48,12 60,8 80,1 C 44,0 22,-1 12,-2 C 8,-2 4,-2 4,-2 Z" class="mini-bat b2" />
+  <path d="M 0,-4 L -4,-2 C -4,-2 -8,-2 -12,-2 C -22,-1 -44,0 -80,1 C -60,8 -48,12 -30,12 C -22,12 -16,10 -10,7 L 0,22 L 10,7 C 16,10 22,12 30,12 C 48,12 60,8 80,1 C 44,0 22,-1 12,-2 C 8,-2 4,-2 4,-2 Z" class="mini-bat b3" />
+  <path d="M 0,-4 L -4,-2 C -4,-2 -8,-2 -12,-2 C -22,-1 -44,0 -80,1 C -60,8 -48,12 -30,12 C -22,12 -16,10 -10,7 L 0,22 L 10,7 C 16,10 22,12 30,12 C 48,12 60,8 80,1 C 44,0 22,-1 12,-2 C 8,-2 4,-2 4,-2 Z" class="mini-bat b4" />
+  <path d="M 0,-4 L -4,-2 C -4,-2 -8,-2 -12,-2 C -22,-1 -44,0 -80,1 C -60,8 -48,12 -30,12 C -22,12 -16,10 -10,7 L 0,22 L 10,7 C 16,10 22,12 30,12 C 48,12 60,8 80,1 C 44,0 22,-1 12,-2 C 8,-2 4,-2 4,-2 Z" class="mini-bat b5" />
+
+  <!-- MAIN BAT-SIGNAL CENTERPIECE -->
+  <!-- Nolan Dark Knight inspired Bat silhouette -->
+  <g class="glow-dark">
+    <!-- Solid inner dark core -->
+    <path d="M 300,135 L 293,148 C 290,147 282,144 275,145 C 255,148 215,152 140,158 C 175,188 200,203 235,203 C 248,203 260,196 270,188 L 300,238 L 330,188 C 340,196 352,203 365,203 C 400,203 425,188 460,158 C 385,152 345,148 325,145 C 318,144 310,147 307,148 Z" fill="#0A0A0E" />
+    
+    <!-- Pulsing Neon Golden Outline -->
+    <path d="M 300,135 L 293,148 C 290,147 282,144 275,145 C 255,148 215,152 140,158 C 175,188 200,203 235,203 C 248,203 260,196 270,188 L 300,238 L 330,188 C 340,196 352,203 365,203 C 400,203 425,188 460,158 C 385,152 345,148 325,145 C 318,144 310,147 307,148 Z" fill="none" stroke="#FFC400" stroke-width="2" class="bat-outline" />
+  </g>
+
+  <!-- ==================== HUD CORNER TELEMETRY ==================== -->
+  
+  <!-- Left Side: CV Personal Details & Stack Diagnostic -->
+  <g fill="#FFC400" font-family="'Fira Code', monospace" font-size="8.5" opacity="0.8" class="glow-yellow">
+    <text x="25" y="40" class="glitch" font-weight="700">ROSHAN_KUMAR_JHA // SECURE_NODE</text>
+    <text x="25" y="55">ROLE_MODULE // FULL_STACK_ENGINEER</text>
+    <text x="25" y="67">LOC.SIGNAL  // BENGALURU_INDIA</text>
+    <rect x="25" y="75" width="80" height="1.2" fill="#FFC400" />
+    
+    <text x="25" y="295">LANGS_CORE // JS.TS.PYTHON.JAVA.DART</text>
+    <text x="25" y="307">STACK_UX   // REACT.NEXTJS.FLUTTER.NODE</text>
+    <text x="25" y="319">INFRA_DECK // POSTGRES.MONGO.AWS.DOCKER</text>
+  </g>
+
+  <!-- Right Side: Stark Suit Telemetry -->
+  <g fill="#FFC400" font-family="'Fira Code', monospace" font-size="8.5" text-anchor="end" opacity="0.8" class="glow-yellow">
+    <text x="575" y="40" class="glitch" font-weight="700">SYS.BAT_SIGNAL // ACTIVE</text>
+    <text x="575" y="55">DEFENSE_LEVEL  // MAXIMUM</text>
+    <text x="575" y="67">COGNITION_LINK  // ON_LINE</text>
+    <rect x="495" y="75" width="80" height="1.2" fill="#FFC400" />
+    
+    <text x="575" y="295">GOTHAM_PROTOCOL // ACTIVE</text>
+    <text x="575" y="307">SECURITY_LINK    // SHIELDED</text>
+    <text x="575" y="319">MISSION_STATUS   // SECURING_CODE</text>
+  </g>
+
+  <!-- Bottom Console Status Ribbon -->
+  <g transform="translate(10, 335)" fill="rgba(255, 255, 255, 0.4)" font-size="9">
+    <text x="15" y="0">SYS.STATUS: PROTECTING_THE_CODEBASE</text>
+    <text x="300" y="0" text-anchor="middle" fill="#FFC400" class="glitch glow-yellow">🦇 BAT_SIGNAL ENGAGED // GOTHAM_QUANTUM_GRID_LOCK</text>
+    <text x="575" y="0" text-anchor="end">LOC // GOTHAM</text>
+  </g>
+</svg>

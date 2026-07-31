@@ -1,40 +1,40 @@
 <div align="center">
 
-  <!-- 3D Animating Robot Loop Centerpiece -->
-  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/robot_playground.gif" width="450" alt="Roshan Kumar Jha's 3D Robot Playground Loop" />
+  <!-- Minimalist Animated Batman SVG Centerpiece -->
+  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/batman.svg" width="620" alt="Roshan Kumar Jha's Animated Batman Profile Banner" />
 
   <br/><br/>
   
-  <h1>🤖 SYSTEM ACTIVE: ROSHAN KUMAR JHA</h1>
+  <h1>🦇 BAT_COMPUTER: ROSHAN KUMAR JHA</h1>
   
   <p>
-    <i>Full-Stack Software Engineer &bull; 3D Creative Coder &bull; Bengaluru, India</i>
+    <i>Full-Stack Software Engineer &bull; Creative Technologist &bull; Bengaluru, India</i>
   </p>
 
   <!-- Diagnostics Badges -->
   <p>
-    <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Email-connect.rosn%40gmail.com-00F0FF?style=for-the-badge&logo=gmail&logoColor=080A10" alt="Email" /></a>
-    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=NEURAL_SYSTEMS&style=for-the-badge&color=ff007f&labelColor=080A10" alt="Followers" /></a>
+    <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Email-connect.rosn%40gmail.com-FFC400?style=for-the-badge&logo=gmail&logoColor=050508" alt="Email" /></a>
+    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=COGNITIVE_GRID&style=for-the-badge&color=FFC400&labelColor=050508" alt="Followers" /></a>
   </p>
 
 </div>
 
 ---
 
-## 🛰️ Diagnostic Summary
+## 🛰️ Bat-Computer Diagnostics
 
 ```yaml
-# Profile metadata compiled from neural bio-data
+# Profile metadata compiled from secure database
 identity: Roshan Kumar Jha
 location: Bengaluru, India
-vocation: Full-Stack software engineering & 3D WebGL visuals
+vocation: Full-Stack software engineering & UI graphics
 credentials:
   - Full Stack Engineer @ Zetheta Algorithms (Jun 2026 – Jul 2026)
   - Machine Learning Intern @ Karunadu Technologies (Feb 2026 – May 2026)
   - Software Development Intern @ Visabi Technologies (Oct 2025 – Feb 2026)
   - 5-Star Coder on HackerRank
   - Published ML Researcher (JETIR, Dec 2025)
-directive: "Compiling code and rendering 3D physics loops. 🤖"
+directive: "With great logic, comes secure code. 🦇"
 ```
 
 <br/>
@@ -54,15 +54,15 @@ directive: "Compiling code and rendering 3D physics loops. 🤖"
 
 <br/>
 
-## 📡 Transmit Signals
+## 📡 Signal Transmissions
 
 <div align="center">
-  <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Signal_Transmit-00F0FF?style=for-the-badge&logo=gmail&logoColor=080A10" alt="Transmit Email" /></a>
-  <a href="https://linkedin.com"><img src="https://img.shields.io/badge/LinkedIn_Protocol-ff007f?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Protocol" /></a>
+  <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Signal_Transmit-FFC400?style=for-the-badge&logo=gmail&logoColor=050508" alt="Transmit Email" /></a>
+  <a href="https://linkedin.com"><img src="https://img.shields.io/badge/LinkedIn_Protocol-FFC400?style=for-the-badge&logo=linkedin&logoColor=050508" alt="LinkedIn Protocol" /></a>
 </div>
 
 <br/>
 
 <div align="center">
-  <sub>WebGL systems locked. Powered by 🤖 Antigravity</sub>
+  <sub>Web systems locked. Pushing limits under 🦇 Gotham Protocols</sub>
 </div>
