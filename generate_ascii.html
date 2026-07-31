@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D ASCII Text Generator &amp; Profile GIF Recorder</title>
+  
+  <!-- Premium Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&amp;family=IBM+Plex+Mono:wght@500;600&amp;display=swap" rel="stylesheet">
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Gifshot CDN (Client-side GIF compiler) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gifshot/0.3.2/gifshot.min.js"></script>
+
+  <style>
+    :root {
+      --bg-dark: #06050C;
+      --bg-panel: #0E0D1A;
+      --neon-pink: #ff6188;
+      --neon-cyan: #00f0ff;
+      --text-light: #cbd5e1;
+      --border: rgba(255, 97, 136, 0.15);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Outfit', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    
+    h1 span {
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px rgba(255, 97, 136, 0.3);
+    }
+    
+    p.subtitle {
+      font-size: 1rem;
+      color: #64748b;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    
+    .recorder-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      width: 100%;
+      max-width: 1100px;
+      background-color: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    
+    .viewer-container {
+      position: relative;
+      background-color: #06050C;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      border-right: 1px solid var(--border);
+      height: 480px;
+      overflow: hidden;
+    }
+    
+    #ascii-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: #06050C;
+    }
+    
+    .controls-container {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .control-group {
+      margin-bottom: 1.8rem;
+    }
+    
+    label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 0.6rem;
+      letter-spacing: 1px;
+    }
+    
+    select, input[type="text"] {
+      width: 100%;
+      background-color: #06050C;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 0.8rem 1rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.3s;
+    }
+    
+    select:focus, input[type="text"]:focus {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 10px rgba(255, 97, 136, 0.25);
+    }
+    
+    /* Toggle switch styles */
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 26px;
+    }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #06050C;
+      border: 1px solid var(--border);
+      transition: .4s;
+      border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #cbd5e1;
+      transition: .4s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--neon-pink);
+    }
+    input:checked + .slider:before {
+      transform: translateX(24px);
+      background-color: #fff;
+    }
+    
+    .btn-record {
+      width: 100%;
+      background-color: var(--neon-pink);
+      color: #fff;
+      border: none;
+      padding: 1.1rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 97, 136, 0.4);
+      transition: all 0.3s;
+    }
+    
+    .btn-record:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(255, 97, 136, 0.7);
+      background-color: #ff3e6c;
+    }
+    
+    .btn-record:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    
+    .progress-wrapper {
+      margin-top: 1.5rem;
+      display: none;
+    }
+    
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background-color: #06050C;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+    
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background-color: var(--neon-pink);
+      box-shadow: 0 0 8px var(--neon-pink);
+      transition: width 0.1s ease;
+    }
+    
+    .progress-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--neon-pink);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>3D ASCII // <span>GIF GENERATOR</span></h1>
+    <p class="subtitle">Render 3D ASCII waves locally &amp; record it to a Profile GIF</p>
+  </header>
+
+  <div class="recorder-grid">
+    <!-- WebGL viewport container -->
+    <div class="viewer-container">
+      <div id="ascii-container"></div>
+    </div>
+    
+    <!-- Control Dashboard -->
+    <div class="controls-container">
+      <div>
+        <div class="control-group">
+          <label>Display Text</label>
+          <input type="text" id="textInput" value="hello_world" oninput="initScene()" />
+        </div>
+
+        <div class="control-group">
+          <label>Enable Wave Animation</label>
+          <label class="switch">
+            <input type="checkbox" id="wavesToggle" checked onchange="initScene()" />
+            <span class="slider"></span>
+          </label>
+        </div>
+
+        <div class="control-group">
+          <label>ASCII Font Size (Glyphs)</label>
+          <select id="asciiFontSizeSelect" onchange="initScene()">
+            <option value="8" selected>8 px (Recommended)</option>
+            <option value="10">10 px</option>
+            <option value="12">12 px</option>
+            <option value="6">6 px (Fine resolution)</option>
+          </select>
+        </div>
+
+        <div class="control-group" style="display: none;">
+          <!-- Hidden inputs for text configuration details -->
+          <input type="text" id="textColorInput" value="#fdf9f3" />
+        </div>
+      </div>
+      
+      <div>
+        <button class="btn-record" id="recordBtn" onclick="startRecording()">⏺️ GENERATE PROFILE GIF</button>
+        
+        <div class="progress-wrapper" id="progressWrapper">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="progress-text" id="progressText">Initializing Canvas...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- SHADERS PORTED FROM REACT BITS ---
+    const vertexShader = `
+      varying vec2 vUv;
+      uniform float uTime;
+      uniform float uEnableWaves;
+
+      void main() {
+          vUv = uv;
+          float time = uTime * 5.;
+          float waveFactor = uEnableWaves;
+          vec3 transformed = position;
+
+          transformed.x += sin(time + position.y) * 0.5 * waveFactor;
+          transformed.y += cos(time + position.z) * 0.15 * waveFactor;
+          transformed.z += sin(time + position.x) * waveFactor;
+
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(transformed, 1.0);
+      }
+    `;
+
+    const fragmentShader = `
+      varying vec2 vUv;
+      uniform float mouse;
+      uniform float uTime;
+      uniform sampler2D uTexture;
+
+      void main() {
+          float time = uTime;
+          vec2 pos = vUv;
+          
+          float move = sin(time + mouse) * 0.01;
+          float r = texture2D(uTexture, pos + cos(time * 2. - time + pos.x) * .01).r;
+          float g = texture2D(uTexture, pos + tan(time * .5 + pos.x - time) * .01).g;
+          float b = texture2D(uTexture, pos - cos(time * 2. + time + pos.y) * .01).b;
+          float a = texture2D(uTexture, pos).a;
+          gl_FragColor = vec4(r, g, b, a);
+      }
+    `;
+
+    Math.map = function (n, start, stop, start2, stop2) {
+      return ((n - start) / (stop - start)) * (stop2 - start2) + start2;
+    };
+
+    const PX_RATIO = typeof window !== 'undefined' ? window.devicePixelRatio : 1;
+
+    // --- ASCII FILTER CLASS ---
+    class AsciiFilter {
+      constructor(renderer, { fontSize, fontFamily, charset, invert } = {}) {
+        this.renderer = renderer;
+        this.domElement = document.createElement('div');
+        this.domElement.style.position = 'absolute';
+        this.domElement.style.top = '0';
+        this.domElement.style.left = '0';
+        this.domElement.style.width = '100%';
+        this.domElement.style.height = '100%';
+
+        this.pre = document.createElement('pre');
+        this.domElement.appendChild(this.pre);
+
+        this.canvas = document.createElement('canvas');
+        this.context = this.canvas.getContext('2d');
+        this.domElement.appendChild(this.canvas);
+
+        this.deg = 0;
+        this.invert = invert ?? true;
+        this.fontSize = fontSize ?? 12;
+        this.fontFamily = fontFamily ?? "'Courier New', monospace";
+        this.charset = charset ?? ' .\'`^",:;Il!i~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
+
+        this.context.imageSmoothingEnabled = false;
+
+        this.onMouseMove = this.onMouseMove.bind(this);
+        document.addEventListener('mousemove', this.onMouseMove);
+      }
+
+      setSize(width, height) {
+        this.width = width;
+        this.height = height;
+        this.renderer.setSize(width, height);
+        this.reset();
+
+        this.center = { x: width / 2, y: height / 2 };
+        this.mouse = { x: this.center.x, y: this.center.y };
+      }
+
+      reset() {
+        this.context.font = `${this.fontSize}px ${this.fontFamily}`;
+        const charWidth = this.context.measureText('A').width;
+
+        this.cols = Math.floor(this.width / (this.fontSize * (charWidth / this.fontSize)));
+        this.rows = Math.floor(this.height / this.fontSize);
+
+        this.canvas.width = this.cols;
+        this.canvas.height = this.rows;
+        this.pre.style.fontFamily = this.fontFamily;
+        this.pre.style.fontSize = `${this.fontSize}px`;
+        this.pre.style.margin = '0';
+        this.pre.style.padding = '0';
+        this.pre.style.lineHeight = '1em';
+        this.pre.style.position = 'absolute';
+        this.pre.style.left = '0';
+        this.pre.style.top = '0';
+        this.pre.style.zIndex = '9';
+        this.pre.style.backgroundAttachment = 'fixed';
+        this.pre.style.mixBlendMode = 'difference';
+      }
+
+      render(scene, camera) {
+        this.renderer.render(scene, camera);
+
+        const w = this.canvas.width;
+        const h = this.canvas.height;
+        this.context.clearRect(0, 0, w, h);
+        if (this.context && w && h) {
+          this.context.drawImage(this.renderer.domElement, 0, 0, w, h);
+        }
+
+        this.asciify(this.context, w, h);
+        this.hue();
+      }
+
+      onMouseMove(e) {
+        this.mouse = { x: e.clientX * PX_RATIO, y: e.clientY * PX_RATIO };
+      }
+
+      get dx() {
+        return this.mouse.x - this.center.x;
+      }
+
+      get dy() {
+        return this.mouse.y - this.center.y;
+      }
+
+      hue() {
+        const deg = (Math.atan2(this.dy, this.dx) * 180) / Math.PI;
+        this.deg += (deg - this.deg) * 0.075;
+        this.domElement.style.filter = `hue-rotate(${this.deg.toFixed(1)}deg)`;
+      }
+
+      asciify(ctx, w, h) {
+        if (w && h) {
+          const imgData = ctx.getImageData(0, 0, w, h).data;
+          let str = '';
+          for (let y = 0; y < h; y++) {
+            for (let x = 0; x < w; x++) {
+              const i = x * 4 + y * 4 * w;
+              const [r, g, b, a] = [imgData[i], imgData[i + 1], imgData[i + 2], imgData[i + 3]];
+
+              if (a === 0) {
+                str += ' ';
+                continue;
+              }
+
+              let gray = (0.3 * r + 0.6 * g + 0.1 * b) / 255;
+              let idx = Math.floor((1 - gray) * (this.charset.length - 1));
+              if (this.invert) idx = this.charset.length - idx - 1;
+              str += this.charset[idx];
+            }
+            str += '\n';
+          }
+          this.pre.innerHTML = str;
+        }
+      }
+
+      dispose() {
+        document.removeEventListener('mousemove', this.onMouseMove);
+      }
+    }
+
+    // --- CANVAS TEXT PLANE CLASS ---
+    class CanvasTxt {
+      constructor(txt, { fontSize = 200, fontFamily = 'Arial', color = '#fdf9f3' } = {}) {
+        this.canvas = document.createElement('canvas');
+        this.context = this.canvas.getContext('2d');
+        this.txt = txt;
+        this.fontSize = fontSize;
+        this.fontFamily = fontFamily;
+        this.color = color;
+
+        this.font = `600 ${this.fontSize}px ${this.fontFamily}`;
+      }
+
+      resize() {
+        this.context.font = this.font;
+        const metrics = this.context.measureText(this.txt);
+
+        const textWidth = Math.ceil(metrics.width) + 20;
+        const textHeight = Math.ceil(metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent) + 20;
+
+        this.canvas.width = textWidth;
+        this.canvas.height = textHeight;
+      }
+
+      render() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.context.fillStyle = this.color;
+        this.context.font = this.font;
+
+        const metrics = this.context.measureText(this.txt);
+        const yPos = 10 + metrics.actualBoundingBoxAscent;
+
+        this.context.fillText(this.txt, 10, yPos);
+      }
+
+      get width() {
+        return this.canvas.width;
+      }
+
+      get height() {
+        return this.canvas.height;
+      }
+
+      get texture() {
+        return this.canvas;
+      }
+    }
+
+    // --- MAIN COORDINATION CLASS ---
+    class CanvAscii {
+      constructor(
+        { text, asciiFontSize, textFontSize, textColor, planeBaseHeight, enableWaves },
+        containerElem,
+        width,
+        height
+      ) {
+        this.textString = text;
+        this.asciiFontSize = asciiFontSize;
+        this.textFontSize = textFontSize;
+        this.textColor = textColor;
+        this.planeBaseHeight = planeBaseHeight;
+        this.container = containerElem;
+        this.width = width;
+        this.height = height;
+        this.enableWaves = enableWaves;
+
+        this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 1, 1000);
+        this.camera.position.z = 30;
+
+        this.scene = new THREE.Scene();
+        this.mouse = { x: this.width / 2, y: this.height / 2 };
+
+        this.onMouseMove = this.onMouseMove.bind(this);
+      }
+
+      async init() {
+        this.setMesh();
+        this.setRenderer();
+      }
+
+      setMesh() {
+        this.textCanvas = new CanvasTxt(this.textString, {
+          fontSize: this.textFontSize,
+          fontFamily: 'IBM Plex Mono',
+          color: this.textColor
+        });
+        this.textCanvas.resize();
+        this.textCanvas.render();
+
+        this.texture = new THREE.CanvasTexture(this.textCanvas.texture);
+        this.texture.minFilter = THREE.NearestFilter;
+
+        const textAspect = this.textCanvas.width / this.textCanvas.height;
+        const baseH = this.planeBaseHeight;
+        const planeW = baseH * textAspect;
+        const planeH = baseH;
+
+        this.geometry = new THREE.PlaneGeometry(planeW, planeH, 36, 36);
+        this.material = new THREE.ShaderMaterial({
+          vertexShader,
+          fragmentShader,
+          transparent: true,
+          uniforms: {
+            uTime: { value: 0 },
+            mouse: { value: 1.0 },
+            uTexture: { value: this.texture },
+            uEnableWaves: { value: this.enableWaves ? 1.0 : 0.0 }
+          }
+        });
+
+        this.mesh = new THREE.Mesh(this.geometry, this.material);
+        this.scene.add(this.mesh);
+      }
+
+      setRenderer() {
+        this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+        this.renderer.setPixelRatio(1);
+        this.renderer.setClearColor(0x000000, 0);
+
+        this.filter = new AsciiFilter(this.renderer, {
+          fontFamily: 'IBM Plex Mono',
+          fontSize: this.asciiFontSize,
+          invert: true
+        });
+
+        this.container.appendChild(this.filter.domElement);
+        
+        // Add custom difference style properties to filter pre element
+        const pre = this.filter.pre;
+        pre.style.backgroundImage = 'radial-gradient(circle, #ff6188 0%, #fc9867 50%, #ffd866 100%)';
+        pre.style.webkitTextFillColor = 'transparent';
+        pre.style.webkitBackgroundClip = 'text';
+
+        this.setSize(this.width, this.height);
+
+        this.container.addEventListener('mousemove', this.onMouseMove);
+        this.container.addEventListener('touchmove', this.onMouseMove);
+      }
+
+      setSize(w, h) {
+        this.width = w;
+        this.height = h;
+
+        this.camera.aspect = w / h;
+        this.camera.updateProjectionMatrix();
+
+        this.filter.setSize(w, h);
+
+        this.center = { x: w / 2, y: h / 2 };
+      }
+
+      load() {
+        this.animate();
+      }
+
+      onMouseMove(evt) {
+        const e = evt.touches ? evt.touches[0] : evt;
+        const bounds = this.container.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+        this.mouse = { x, y };
+      }
+
+      animate() {
+        const animateFrame = () => {
+          this.animationFrameId = requestAnimationFrame(animateFrame);
+          this.render();
+        };
+        animateFrame();
+      }
+
+      render() {
+        const time = new Date().getTime() * 0.001;
+
+        this.textCanvas.render();
+        this.texture.needsUpdate = true;
+
+        this.mesh.material.uniforms.uTime.value = Math.sin(time);
+
+        this.updateRotation();
+        this.filter.render(this.scene, this.camera);
+      }
+
+      updateRotation() {
+        const x = Math.map(this.mouse.y, 0, this.height, 0.5, -0.5);
+        const y = Math.map(this.mouse.x, 0, this.width, -0.5, 0.5);
+
+        this.mesh.rotation.x += (x - this.mesh.rotation.x) * 0.05;
+        this.mesh.rotation.y += (y - this.mesh.rotation.y) * 0.05;
+      }
+
+      clear() {
+        this.scene.traverse(obj => {
+          if (obj.isMesh && typeof obj.material === 'object' && obj.material !== null) {
+            Object.keys(obj.material).forEach(key => {
+              const matProp = obj.material[key];
+              if (matProp !== null && typeof matProp === 'object' && typeof matProp.dispose === 'function') {
+                matProp.dispose();
+              }
+            });
+            obj.material.dispose();
+            obj.geometry.dispose();
+          }
+        });
+        this.scene.clear();
+      }
+
+      dispose() {
+        cancelAnimationFrame(this.animationFrameId);
+        if (this.filter) {
+          this.filter.dispose();
+          if (this.filter.domElement.parentNode) {
+            this.container.removeChild(this.filter.domElement);
+          }
+        }
+        this.container.removeEventListener('mousemove', this.onMouseMove);
+        this.container.removeEventListener('touchmove', this.onMouseMove);
+        this.clear();
+        if (this.renderer) {
+          this.renderer.dispose();
+          this.renderer.forceContextLoss();
+        }
+      }
+    }
+
+    // --- INSTANTIATE INITIAL SCENE ---
+    let currentInstance = null;
+
+    async function initScene() {
+      const container = document.getElementById('ascii-container');
+      
+      // Clear container child elements manually if re-initializing
+      if (currentInstance) {
+        currentInstance.dispose();
+        container.innerHTML = '';
+      }
+      
+      const text = document.getElementById('textInput').value || 'hello_world';
+      const asciiFontSize = parseInt(document.getElementById('asciiFontSizeSelect').value);
+      const enableWaves = document.getElementById('wavesToggle').checked;
+      const textColor = document.getElementById('textColorInput').value;
+      
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+      
+      currentInstance = new CanvAscii({
+        text,
+        asciiFontSize,
+        textFontSize: 200,
+        textColor,
+        planeBaseHeight: 8,
+        enableWaves
+      }, container, width, height);
+      
+      await currentInstance.init();
+      currentInstance.load();
+    }
+
+    // Initialize on page load
+    window.addEventListener('load', initScene);
+    window.addEventListener('resize', () => {
+      if (currentInstance) {
+        const container = document.getElementById('ascii-container');
+        currentInstance.setSize(container.clientWidth, container.clientHeight);
+      }
+    });
+
+    // --- 2D CANVAS COMPILER (For local GIF recording) ---
+    // This function draws the HTML pre character glyphs onto a 2D canvas with the gradient overlay
+    function renderAsciiFrameToCanvas(textStr, width, height, fontSize, fontFamily) {
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      
+      // Solid dark background
+      ctx.fillStyle = '#06050C';
+      ctx.fillRect(0, 0, width, height);
+      
+      // Draw radial gradient mask matching the difference blend mode
+      const gradient = ctx.createRadialGradient(
+        width / 2, height / 2, 0, 
+        width / 2, height / 2, Math.max(width, height) / 1.5
+      );
+      gradient.addColorStop(0, '#ff6188');
+      gradient.addColorStop(0.5, '#fc9867');
+      gradient.addColorStop(1, '#ffd866');
+      
+      ctx.fillStyle = gradient;
+      
+      // Set monospace font parameters matching container
+      ctx.font = `${fontSize}px ${fontFamily}`;
+      ctx.textBaseline = 'top';
+      
+      const lines = textStr.split('\n');
+      
+      // Measure character spacing for proper font columns alignment
+      const charWidth = ctx.measureText('A').width;
+      const lineHeight = fontSize;
+      
+      for (let i = 0; i < lines.length; i++) {
+        // Draw string glyphs
+        ctx.fillText(lines[i], 0, i * lineHeight);
+      }
+      
+      return canvas.toDataURL('image/png');
+    }
+
+    // --- RECORDING ACTION ---
+    async function startRecording() {
+      const recordBtn = document.getElementById('recordBtn');
+      const progressWrapper = document.getElementById('progressWrapper');
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      const container = document.getElementById('ascii-container');
+      const size = parseInt(document.getElementById('sizeSelect')?.value) || 450;
+      
+      recordBtn.disabled = true;
+      progressWrapper.style.display = 'block';
+      progressFill.style.width = '0%';
+      
+      const frames = [];
+      const totalFrames = 40; // Approx 2.6s loop
+      const frameDelay = 180; // Delay between frames
+      
+      const textElement = container.querySelector('pre');
+      const fontSize = currentInstance.asciiFontSize;
+      const fontFamily = '"IBM Plex Mono", monospace';
+      
+      for (let i = 0; i < totalFrames; i++) {
+        progressText.innerText = `Capturing glyph frames... (${Math.round((i / totalFrames) * 100)}%)`;
+        progressFill.style.width = `${(i / totalFrames) * 100}%`;
+        
+        // Grab character string from pre tag
+        const asciiTextString = textElement.innerText || '';
+        
+        // Compile string into a graphical 2D canvas frame
+        const frameDataUrl = renderAsciiFrameToCanvas(
+          asciiTextString, 
+          container.clientWidth, 
+          container.clientHeight, 
+          fontSize, 
+          fontFamily
+        );
+        
+        frames.push(frameDataUrl);
+        await new Promise(resolve => setTimeout(resolve, frameDelay));
+      }
+      
+      progressText.innerText = 'Compiling glyph buffers into GIF...';
+      progressFill.style.width = '100%';
+      
+      // Call gifshot compiler
+      gifshot.createGIF({
+        images: frames,
+        gifWidth: container.clientWidth,
+        gifHeight: container.clientHeight,
+        interval: 0.15, // Delay
+        numWorkers: 2,
+        keepAspectRatio: true
+      }, function (obj) {
+        if (!obj.error) {
+          const downloadLink = document.createElement('a');
+          downloadLink.download = 'ascii_profile.gif';
+          downloadLink.href = obj.image;
+          downloadLink.click();
+          
+          progressText.innerText = '✅ Generation Complete! Download triggered.';
+          recordBtn.disabled = false;
+        } else {
+          progressText.innerText = '❌ Error compiling GIF: ' + obj.error;
+          recordBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

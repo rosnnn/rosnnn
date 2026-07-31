@@ -1,40 +1,40 @@
 <div align="center">
 
-  <!-- Minimalist Animated Batman SVG Centerpiece -->
-  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/batman.svg" width="620" alt="Roshan Kumar Jha's Animated Batman Profile Banner" />
+  <!-- 3D Animated ASCII Text centerpiece -->
+  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/ascii_profile.gif" width="600" alt="Roshan Kumar Jha's 3D ASCII Text Overview" />
 
   <br/><br/>
   
-  <h1>🦇 BAT_COMPUTER: ROSHAN KUMAR JHA</h1>
+  <h1>🌌 SYSTEM ACTIVE: ROSHAN KUMAR JHA</h1>
   
   <p>
-    <i>Full-Stack Software Engineer &bull; Creative Technologist &bull; Bengaluru, India</i>
+    <i>Full-Stack Software Engineer &bull; Creative Coder &bull; Bengaluru, India</i>
   </p>
 
   <!-- Diagnostics Badges -->
   <p>
-    <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Email-connect.rosn%40gmail.com-FFC400?style=for-the-badge&logo=gmail&logoColor=050508" alt="Email" /></a>
-    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=COGNITIVE_GRID&style=for-the-badge&color=FFC400&labelColor=050508" alt="Followers" /></a>
+    <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Email-connect.rosn%40gmail.com-ff6188?style=for-the-badge&logo=gmail&logoColor=06050C" alt="Email" /></a>
+    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=ASCII_NODES&style=for-the-badge&color=ff6188&labelColor=06050C" alt="Followers" /></a>
   </p>
 
 </div>
 
 ---
 
-## 🛰️ Bat-Computer Diagnostics
+## 🛰️ System Log Diagnostics
 
 ```yaml
 # Profile metadata compiled from secure database
 identity: Roshan Kumar Jha
 location: Bengaluru, India
-vocation: Full-Stack software engineering & UI graphics
+vocation: Full-Stack software engineering & 3D WebGL visuals
 credentials:
   - Full Stack Engineer @ Zetheta Algorithms (Jun 2026 – Jul 2026)
   - Machine Learning Intern @ Karunadu Technologies (Feb 2026 – May 2026)
   - Software Development Intern @ Visabi Technologies (Oct 2025 – Feb 2026)
   - 5-Star Coder on HackerRank
   - Published ML Researcher (JETIR, Dec 2025)
-directive: "With great logic, comes secure code. 🦇"
+directive: "Compiling code and rendering 3D ASCII wave fields. 🌌"
 ```
 
 <br/>
@@ -57,12 +57,12 @@ directive: "With great logic, comes secure code. 🦇"
 ## 📡 Signal Transmissions
 
 <div align="center">
-  <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Signal_Transmit-FFC400?style=for-the-badge&logo=gmail&logoColor=050508" alt="Transmit Email" /></a>
-  <a href="https://linkedin.com"><img src="https://img.shields.io/badge/LinkedIn_Protocol-FFC400?style=for-the-badge&logo=linkedin&logoColor=050508" alt="LinkedIn Protocol" /></a>
+  <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Signal_Transmit-ff6188?style=for-the-badge&logo=gmail&logoColor=06050C" alt="Transmit Email" /></a>
+  <a href="https://linkedin.com"><img src="https://img.shields.io/badge/LinkedIn_Protocol-ff6188?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Protocol" /></a>
 </div>
 
 <br/>
 
 <div align="center">
-  <sub>Web systems locked. Pushing limits under 🦇 Gotham Protocols</sub>
+  <sub>All systems loaded. Running 3D ASCII shader overlays.</sub>
 </div>
