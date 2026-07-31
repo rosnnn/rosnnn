@@ -1,0 +1,339 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <!-- Dark/Light Theme Support & Fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&amp;family=Fira+Code:wght@500&amp;display=swap');
+      
+      svg {
+        background-color: #06080E;
+        font-family: 'Outfit', sans-serif;
+      }
+      
+      /* Glowing Glow Filters */
+      .neon-glow-cyan {
+        filter: drop-shadow(0 0 8px #00F0FF);
+      }
+      .neon-glow-pink {
+        filter: drop-shadow(0 0 8px #FF007F);
+      }
+      .neon-glow-green {
+        filter: drop-shadow(0 0 6px #10B981);
+      }
+      
+      /* Gradients */
+      #magenta-cyan-grad {
+        gradientTransform: rotate(45);
+      }
+      
+      /* --- ANIMATION KEYFRAMES --- */
+      
+      /* Tail Sway */
+      @keyframes sway {
+        0% { transform: rotate(-5deg); }
+        100% { transform: rotate(18deg); }
+      }
+      .tail-group {
+        transform-origin: 180px 340px;
+        animation: sway 3s ease-in-out infinite alternate;
+      }
+      
+      /* Head Breathing / Bobbing */
+      @keyframes head-bob {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-4px) rotate(1deg); }
+      }
+      .head-group {
+        transform-origin: 300px 310px;
+        animation: head-bob 6s ease-in-out infinite;
+      }
+      
+      /* Ear Twitching (Staggered) */
+      @keyframes ear-l-twitch {
+        0%, 90%, 94%, 98%, 100% { transform: rotate(0deg); }
+        92%, 96% { transform: rotate(-6deg); }
+      }
+      .ear-left {
+        transform-origin: 220px 180px;
+        animation: ear-l-twitch 4.5s ease-in-out infinite;
+      }
+      
+      @keyframes ear-r-twitch {
+        0%, 88%, 92%, 96%, 100% { transform: rotate(0deg); }
+        90%, 94% { transform: rotate(6deg); }
+      }
+      .ear-right {
+        transform-origin: 380px 180px;
+        animation: ear-r-twitch 4.5s ease-in-out infinite;
+      }
+      
+      /* Glowing Visor Scanline */
+      @keyframes scan {
+        0% { y: 192px; opacity: 0.3; }
+        50% { y: 236px; opacity: 1; }
+        100% { y: 192px; opacity: 0.3; }
+      }
+      .visor-scanline {
+        animation: scan 4s linear infinite;
+      }
+      
+      /* Core Pulse (Arc Reactor Chest Shield) */
+      @keyframes pulse {
+        0%, 100% { transform: scale(0.9); opacity: 0.5; }
+        50% { transform: scale(1.1); opacity: 1; }
+      }
+      .chest-core-glow {
+        transform-origin: 300px 370px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      
+      /* Whiskers Data/Circuit Pulse */
+      @keyframes circuit-flow {
+        0% { stroke-dashoffset: 100; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .whisker-pulse {
+        stroke-dasharray: 25 75;
+        animation: circuit-flow 2.5s linear infinite;
+      }
+      
+      /* HUD Rotation Behind the Cat */
+      @keyframes hud-rotate-cw {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes hud-rotate-ccw {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(-360deg); }
+      }
+      .hud-cw {
+        transform-origin: 300px 230px;
+        animation: hud-rotate-cw 25s linear infinite;
+      }
+      .hud-ccw {
+        transform-origin: 300px 230px;
+        animation: hud-rotate-ccw 15s linear infinite;
+      }
+      
+      /* Digital Matrix Rain In Background */
+      @keyframes rain-fall {
+        0% { transform: translateY(-100px); opacity: 0; }
+        10% { opacity: 0.4; }
+        90% { opacity: 0.4; }
+        100% { transform: translateY(450px); opacity: 0; }
+      }
+      .matrix-rain {
+        font-family: 'Fira Code', monospace;
+        font-size: 8px;
+        fill: #00F0FF;
+        opacity: 0;
+        animation: rain-fall 7s linear infinite;
+      }
+      .rain-pink {
+        fill: #FF007F;
+      }
+      .d1 { animation-delay: 0s; }
+      .d2 { animation-delay: 1.5s; }
+      .d3 { animation-delay: 3s; }
+      .d4 { animation-delay: 4.5s; }
+      .d5 { animation-delay: 5.5s; }
+      
+      /* Glitch Effect on Text Header */
+      @keyframes glitch-text {
+        0%, 100% { transform: translate(0); text-shadow: none; }
+        92% { transform: translate(1px, -1px); text-shadow: -1px 0 #FF007F, 1px 0 #00F0FF; }
+        94% { transform: translate(-1px, 1px); text-shadow: 1px 0 #FF007F, -1px 0 #00F0FF; }
+        96% { transform: translate(0); }
+      }
+      .glitch {
+        animation: glitch-text 6s step-end infinite;
+      }
+    </style>
+
+    <!-- Glowing Filters & Gradients -->
+    <linearGradient id="neon-pink-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF007F" />
+      <stop offset="100%" stop-color="#7928CA" />
+    </linearGradient>
+    
+    <linearGradient id="neon-cyan-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="100%" stop-color="#0070F3" />
+    </linearGradient>
+    
+    <!-- Clipping Mask for Visor Content -->
+    <clipPath id="visor-clip">
+      <path d="M 230,195 L 370,195 L 382,235 L 300,248 L 218,235 Z" />
+    </clipPath>
+    
+    <!-- Cyber Grid Pattern for Visor -->
+    <pattern id="visor-grid" width="6" height="6" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="6" y2="0" stroke="rgba(0, 240, 255, 0.25)" stroke-width="0.5" />
+      <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(0, 240, 255, 0.25)" stroke-width="0.5" />
+    </pattern>
+  </defs>
+
+  <!-- BACKGROUND: Technical Grid Lines -->
+  <g stroke="#101524" stroke-width="0.8" opacity="0.6">
+    <line x1="50" y1="0" x2="50" y2="450" />
+    <line x1="150" y1="0" x2="150" y2="450" />
+    <line x1="250" y1="0" x2="250" y2="450" />
+    <line x1="350" y1="0" x2="350" y2="450" />
+    <line x1="450" y1="0" x2="450" y2="450" />
+    <line x1="550" y1="0" x2="550" y2="450" />
+    <line x1="0" y1="75" x2="600" y2="75" />
+    <line x1="0" y1="175" x2="600" y2="175" />
+    <line x1="0" y1="275" x2="600" y2="275" />
+    <line x1="0" y1="375" x2="600" y2="375" />
+  </g>
+
+  <!-- BACKGROUND: Digital Falling Rain (Matrix Style) -->
+  <text x="40" y="0" class="matrix-rain d1">10101100101</text>
+  <text x="90" y="0" class="matrix-rain rain-pink d3">01001110</text>
+  <text x="140" y="0" class="matrix-rain d2">111010</text>
+  <text x="200" y="0" class="matrix-rain d4">01101001</text>
+  <text x="400" y="0" class="matrix-rain rain-pink d2">100101</text>
+  <text x="460" y="0" class="matrix-rain d5">110100101</text>
+  <text x="520" y="0" class="matrix-rain d3">011101</text>
+  <text x="560" y="0" class="matrix-rain rain-pink d1">10101011</text>
+
+  <!-- BACKGROUND: Concentric HUD Radar System -->
+  <g opacity="0.3">
+    <!-- Outer Tick Ring (CW) -->
+    <circle cx="300" cy="230" r="160" fill="none" stroke="#00F0FF" stroke-width="1" stroke-dasharray="6 20 2 12" class="hud-cw" />
+    <!-- Secondary Dashed Ring (CCW) -->
+    <circle cx="300" cy="230" r="140" fill="none" stroke="#FF007F" stroke-width="1.5" stroke-dasharray="15 30" class="hud-ccw" />
+    <!-- Fine Coordinate Lines -->
+    <line x1="300" y1="50" x2="300" y2="410" stroke="#00F0FF" stroke-width="0.5" stroke-dasharray="3 6" />
+    <line x1="120" y1="230" x2="480" y2="230" stroke="#00F0FF" stroke-width="0.5" stroke-dasharray="3 6" />
+  </g>
+
+  <!-- THE TAIL (Sways independently behind body) -->
+  <g class="tail-group">
+    <!-- Outer Glowing Neon Border -->
+    <path d="M 180,340 C 130,340 90,290 90,240 C 90,190 120,170 130,170 C 120,185 105,210 105,240 C 105,280 140,320 180,325 Z" fill="none" stroke="#FF007F" stroke-width="3" class="neon-glow-pink" />
+    <!-- Tail Body Fill -->
+    <path d="M 180,340 C 130,340 90,290 90,240 C 90,190 120,170 130,170 C 120,185 105,210 105,240 C 105,280 140,320 180,325 Z" fill="url(#neon-pink-grad)" opacity="0.8" />
+  </g>
+
+  <!-- THE BODY / ROBOT CHASSIS -->
+  <g>
+    <!-- Left Shoulder Shell -->
+    <path d="M 220,265 L 140,380 L 245,380 Z" fill="#0C101B" stroke="#1E2A4A" stroke-width="1.5" />
+    <path d="M 215,280 L 155,370 L 235,370 Z" fill="none" stroke="#00F0FF" stroke-width="0.8" opacity="0.4" />
+    
+    <!-- Right Shoulder Shell -->
+    <path d="M 380,265 L 460,380 L 355,380 Z" fill="#0C101B" stroke="#1E2A4A" stroke-width="1.5" />
+    <path d="M 385,280 L 445,370 L 365,370 Z" fill="none" stroke="#00F0FF" stroke-width="0.8" opacity="0.4" />
+
+    <!-- Chest Armor Shield -->
+    <path d="M 245,310 L 355,310 L 390,380 L 210,380 Z" fill="#0E1324" stroke="#00F0FF" stroke-width="2" class="neon-glow-cyan" />
+    <!-- Chest Tech Patterns -->
+    <line x1="255" y1="325" x2="345" y2="325" stroke="#1E2A4A" stroke-width="1" />
+    <line x1="265" y1="335" x2="335" y2="335" stroke="#1E2A4A" stroke-width="1" />
+
+    <!-- Pulsing Chest Core (Arc Reactor) -->
+    <circle cx="300" cy="355" r="14" fill="none" stroke="#FF007F" stroke-width="2" class="chest-core-glow neon-glow-pink" />
+    <circle cx="300" cy="355" r="7" fill="#FF007F" class="chest-core-glow neon-glow-pink" />
+  </g>
+
+  <!-- THE HEAD ASSEMBLY (Bobs & tilts slightly) -->
+  <g class="head-group">
+    
+    <!-- Left Cyber Ear (Triangular HUD style) -->
+    <g class="ear-left">
+      <!-- Outer Metal Structure -->
+      <path d="M 220,180 L 165,75 L 265,125 Z" fill="#0F1322" stroke="#1E2A4A" stroke-width="2" />
+      <!-- Inner Glowing Core -->
+      <path d="M 215,168 L 175,90 L 252,125 Z" fill="url(#neon-pink-grad)" stroke="#FF007F" stroke-width="1.5" class="neon-glow-pink" />
+    </g>
+    
+    <!-- Right Cyber Ear (Triangular HUD style) -->
+    <g class="ear-right">
+      <!-- Outer Metal Structure -->
+      <path d="M 380,180 L 435,75 L 335,125 Z" fill="#0F1322" stroke="#1E2A4A" stroke-width="2" />
+      <!-- Inner Glowing Core -->
+      <path d="M 385,168 L 425,90 L 348,125 Z" fill="url(#neon-pink-grad)" stroke="#FF007F" stroke-width="1.5" class="neon-glow-pink" />
+    </g>
+
+    <!-- Main Metallic Face Plate -->
+    <path d="M 220,180 L 300,135 L 380,180 L 392,265 L 300,312 L 208,265 Z" fill="#0B0E17" stroke="#1E2A4A" stroke-width="2" />
+
+    <!-- Face Detail Inset Plates -->
+    <path d="M 225,188 L 300,147 L 375,188 L 385,255 L 300,298 L 215,255 Z" fill="#07090F" stroke="#101525" stroke-width="1" />
+
+    <!-- CYBERNETIC VISOR (LED Display Clip) -->
+    <g>
+      <!-- Base Visor Shape (Masked) -->
+      <g clip-path="url(#visor-clip)">
+        <!-- Visor Dark Screen -->
+        <rect x="210" y="180" width="180" height="80" fill="#1C051A" />
+        <!-- Glowing LED Matrix Grid -->
+        <rect x="210" y="180" width="180" height="80" fill="url(#visor-grid)" />
+        
+        <!-- Left & Right Simulated Eyes (Equalizer Waves) -->
+        <!-- Left Eye HUD Graphic -->
+        <g stroke="#00F0FF" stroke-width="1.5" opacity="0.8">
+          <line x1="240" y1="215" x2="260" y2="215" />
+          <circle cx="270" cy="215" r="4" fill="none" stroke-width="1" />
+          <path d="M 245,207 H 255" />
+          <path d="M 245,223 H 255" />
+        </g>
+        <!-- Right Eye HUD Graphic -->
+        <g stroke="#00F0FF" stroke-width="1.5" opacity="0.8">
+          <line x1="340" y1="215" x2="360" y2="215" />
+          <circle cx="330" cy="215" r="4" fill="none" stroke-width="1" />
+          <path d="M 345,207 H 355" />
+          <path d="M 345,223 H 355" />
+        </g>
+
+        <!-- Dynamic Laser Visor Scanline -->
+        <rect x="210" y="195" width="180" height="3" fill="#00F0FF" class="visor-scanline neon-glow-cyan" />
+      </g>
+      <!-- Outer Visor Frame Outline -->
+      <path d="M 230,195 L 370,195 L 382,235 L 300,248 L 218,235 Z" fill="none" stroke="#FF007F" stroke-width="2.5" class="neon-glow-pink" />
+    </g>
+
+    <!-- WHISKERS (Pulse Animated Circuit Tracks) -->
+    <!-- Left Whisker Core -->
+    <path d="M 205,268 L 130,268 L 105,290" fill="none" stroke="#1E2A4A" stroke-width="1.5" />
+    <path d="M 205,278 L 125,290 L 95,315" fill="none" stroke="#1E2A4A" stroke-width="1.5" />
+    <!-- Left Glowing Whisker Pulses -->
+    <path d="M 205,268 L 130,268 L 105,290" fill="none" stroke="#00F0FF" stroke-width="2" class="whisker-pulse neon-glow-cyan" />
+    <path d="M 205,278 L 125,290 L 95,315" fill="none" stroke="#00F0FF" stroke-width="2" class="whisker-pulse neon-glow-cyan" style="animation-delay: 1.2s;" />
+
+    <!-- Right Whisker Core -->
+    <path d="M 395,268 L 470,268 L 495,290" fill="none" stroke="#1E2A4A" stroke-width="1.5" />
+    <path d="M 395,278 L 475,290 L 505,315" fill="none" stroke="#1E2A4A" stroke-width="1.5" />
+    <!-- Right Glowing Whisker Pulses -->
+    <path d="M 395,268 L 470,268 L 495,290" fill="none" stroke="#00F0FF" stroke-width="2" class="whisker-pulse neon-glow-cyan" style="animation-delay: 0.5s;" />
+    <path d="M 395,278 L 475,290 L 505,315" fill="none" stroke="#00F0FF" stroke-width="2" class="whisker-pulse neon-glow-cyan" style="animation-delay: 1.7s;" />
+
+    <!-- NOSE & MOUTH -->
+    <!-- Nose (Micro Circuit Triangle) -->
+    <polygon points="296,260 304,260 300,266" fill="#00F0FF" class="neon-glow-cyan" />
+    <!-- Mouth Line (Geometric brackets) -->
+    <path d="M 288,276 L 300,283 L 312,276" fill="none" stroke="#00F0FF" stroke-width="1.5" class="neon-glow-cyan" />
+  </g>
+
+  <!-- FOREGROUND: Neon Profile Header Text & Systems Grid -->
+  <!-- Top Left HUD Details -->
+  <g fill="#00F0FF" font-family="'Fira Code', monospace" font-size="8" opacity="0.8">
+    <text x="30" y="40" class="glitch">SYS.VERSION // 4.02.9</text>
+    <text x="30" y="55">NODE_ID // ROSNNN_NET</text>
+    <rect x="30" y="62" width="60" height="1" fill="#00F0FF" />
+  </g>
+
+  <!-- Top Right HUD Details -->
+  <g fill="#FF007F" font-family="'Fira Code', monospace" font-size="8" text-anchor="end" opacity="0.8">
+    <text x="570" y="40">NEURAL_SYNC // ACTIVE</text>
+    <text x="570" y="55">CORE_TEMP // 34.2 C</text>
+    <rect x="510" y="62" width="60" height="1" fill="#FF007F" />
+  </g>
+
+  <!-- Bottom HUD Metrics Overlay -->
+  <g transform="translate(10, 420)" fill="rgba(255, 255, 255, 0.4)" font-size="9">
+    <text x="30" y="0">MATRIX CORRUPT: FALSE</text>
+    <text x="210" y="0" fill="#00F0FF">INT_PROT // INITIATE_DANCE_SEQUENCE</text>
+    <text x="550" y="0" text-anchor="end">LOC: 127.0.0.1</text>
+  </g>
+</svg>
