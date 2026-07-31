@@ -1,56 +1,68 @@
 <div align="center">
 
-  <!-- Cozy Lo-Fi Sunset & Cassette Player SVG Centerpiece -->
-  <img src="./lofi-chill.svg" width="620" alt="rosnnn's Cozy Lo-Fi Code Deck" />
+  <!-- Cosmic Spidey & Galaxy Constellation SVG Centerpiece -->
+  <img src="./spidey-galaxy.svg" width="620" alt="Roshan Kumar Jha's Cosmic Spider-Man Constellation Banner" />
 
   <br/><br/>
   
-  <h1>☕ COZY CODE DECK: rosnnn</h1>
+  <h1>🕸️ SYSTEM INITIALIZED: ROSHAN KUMAR JHA</h1>
   
   <p>
-    <i>lofi beats, warm coffee, and smooth code iterations.</i>
+    <i>Full-Stack Software Engineer &bull; Creative Technologist &bull; Bengaluru, India</i>
   </p>
 
-  <!-- Cozy Badges -->
+  <!-- Diagnostics Badges -->
   <p>
-    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=COZY_MUTUALS&style=for-the-badge&color=FFEEAD&labelColor=0F0E17" alt="Followers" /></a>
-    <a href="https://github.com/rosnnn?tab=repositories"><img src="https://img.shields.io/github/stars/rosnnn?style=for-the-badge&color=FF8E9F&labelColor=0F0E17" alt="Stars" /></a>
+    <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Email-connect.rosn%40gmail.com-00F0FF?style=for-the-badge&logo=gmail&logoColor=06050C" alt="Email" /></a>
+    <a href="https://github.com/rosnnn"><img src="https://img.shields.io/github/followers/rosnnn?label=NEURAL_NETWORK&style=for-the-badge&color=FF3B30&labelColor=06050C" alt="Followers" /></a>
   </p>
 
 </div>
 
 ---
 
-## 🎵 Tracklist (System Specifications)
+## 🛰️ Diagnostic Summary
 
-```text
-Track  //  Title                 //  Length  //  Status
------------------------------------------------------------
-[01]   //  about_rosnnn.sh       //  03:15   //  [MEDITATIVE]
-[02]   //  core_tech_stack.json  //  04:22   //  [COMPILING]
-[03]   //  relaxing_waves.mp3    //  05:40   //  [LOOPING]
-```
-
-### 📁 track_02 // core_tech_stack.json
-```json
-{
-  "frontend": ["JavaScript", "TypeScript", "React", "Next.js", "HTML5 Canvas"],
-  "backend": ["Node.js", "Express.js", "APIs"],
-  "design": ["Figma", "SVG Motion Design", "Cozy Art Directions"]
-}
+```yaml
+# Profile metadata compiled from neural bio-data
+identity: Roshan Kumar Jha
+location: Bengaluru, India
+vocation: Full-Stack software engineering & AI integration
+credentials:
+  - Full Stack Engineer @ Zetheta Algorithms (Jun 2026 – Jul 2026)
+  - Machine Learning Intern @ Karunadu Technologies (Feb 2026 – May 2026)
+  - Software Development Intern @ Visabi Technologies (Oct 2025 – Feb 2026)
+  - 5-Star Coder on HackerRank
+  - Published ML Researcher (JETIR, Dec 2025)
+directive: "With great power, comes clean code. 🕸️"
 ```
 
 <br/>
 
-## 📡 Tune in to my Signal
+## 🛠️ Combat Tech Stack
+
+### 💻 Core Engineering Core
+* **Languages**: Python, JavaScript, TypeScript, Java, Dart, SQL
+* **Frontend / Mobile**: React, Next.js, Flutter, HTML5, CSS3
+* **Backend Systems**: Node.js, FastAPI, Django, REST APIs, Celery, Microservices
+* **Databases & Cloud**: PostgreSQL, MongoDB, Redis, AWS (EC2, S3, Lambda), Docker, Kubernetes
+* **AI Dev Tools**: Antigravity, Cursor, Claude, GitHub Copilot
+
+### 🧠 Machine Learning & Research
+* **Libraries**: PyTorch, scikit-learn, Pandas, NumPy, LSTM/GRU, LLM Integration
+* **Projects**: FinSight (AI Personal Finance dashboard), Job OS (Multi-Agent ATS aggregator)
+
+<br/>
+
+## 📡 Grid Transmissions
 
 <div align="center">
-  <a href="mailto:your-email@example.com"><img src="https://img.shields.io/badge/Transmit_Signal-FFAD60?style=for-the-badge&logo=gmail&logoColor=0F0E17" alt="Email" /></a>
-  <a href="https://linkedin.com/in/your-profile"><img src="https://img.shields.io/badge/LinkedIn_Link-FF8E9F?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="mailto:connect.rosn@gmail.com"><img src="https://img.shields.io/badge/Signal_Transmit-00F0FF?style=for-the-badge&logo=gmail&logoColor=06050C" alt="Transmit Email" /></a>
+  <a href="https://linkedin.com"><img src="https://img.shields.io/badge/LinkedIn_Protocol-FF3B30?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Protocol" /></a>
 </div>
 
 <br/>
 
 <div align="center">
-  <sub>Tape player fully active. Powered by ☕ Antigravity</sub>
+  <sub>Web systems locked. Pushing limits under 🕷️ Stark Protocols</sub>
 </div>
