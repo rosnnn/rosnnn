@@ -15,13 +15,13 @@
         opacity: 0.35;
       }
       .glow-cyan {
-        filter: drop-shadow(0 0 6px #00F0FF);
+        filter: drop-shadow(0 0 8px #00F0FF);
       }
       .glow-red {
-        filter: drop-shadow(0 0 6px #FF3B30);
+        filter: drop-shadow(0 0 8px #FF3B30);
       }
       .glow-white {
-        filter: drop-shadow(0 0 8px #FFFFFF);
+        filter: drop-shadow(0 0 10px #FFFFFF);
       }
       
       /* --- ANIMATIONS --- */
@@ -78,17 +78,17 @@
       
       /* Spidey Suit Circuit Glow Pulse */
       @keyframes suit-pulse {
-        0%, 100% { opacity: 0.4; }
+        0%, 100% { opacity: 0.6; }
         50% { opacity: 1; }
       }
       .suit-glow-r {
         stroke: #FF3B30;
-        animation: suit-pulse 2s ease-in-out infinite;
+        animation: suit-pulse 2.5s ease-in-out infinite;
       }
       .suit-glow-b {
-        stroke: #0070F3;
-        animation: suit-pulse 2s ease-in-out infinite;
-        animation-delay: 1s;
+        stroke: #00F0FF;
+        animation: suit-pulse 2.5s ease-in-out infinite;
+        animation-delay: 1.2s;
       }
       
       /* Glitch Diagnostic Text */
@@ -113,11 +113,6 @@
       <stop offset="0%" stop-color="#FFFDF0" />
       <stop offset="60%" stop-color="#FFEEAD" />
       <stop offset="100%" stop-color="#E2D497" />
-    </linearGradient>
-    
-    <linearGradient id="spidey-suit-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#120A21" />
-      <stop offset="100%" stop-color="#07030C" />
     </linearGradient>
   </defs>
 
@@ -186,8 +181,6 @@
     <!-- Concentric inner spider-web lines -->
     <path d="M 240,120 Q 290,115 320,115 Q 310,210 310,215 Q 260,230 260,230 Q 210,210 210,205 Q 200,160 240,120 Z" fill="none" class="glow-cyan" />
     <path d="M 240,120 Q 290,115 320,115 Q 310,210 310,215 Q 260,230 260,230 Q 210,210 210,205 Q 200,160 240,120 Z" fill="none" class="web-mesh-pulse" />
-    
-    <path d="M 265,140 Q 290,137 305,137 Q 300,185 300,187 Q 275,195 275,195 Q 250,185 250,182 Q 245,160 265,140 Z" fill="none" class="glow-cyan" opacity="0.8" />
   </g>
 
   <!-- ==================== MOON AND SPIDER-MAN SYSTEM ==================== -->
@@ -195,62 +188,53 @@
     
     <!-- THE GLOWING CRESCENT MOON -->
     <g>
-      <!-- Crescent shape -->
       <path d="M 540,110 C 470,110 410,170 410,240 C 410,310 470,370 540,370 C 500,350 475,310 475,240 C 475,170 500,130 540,110 Z" fill="url(#moon-grad)" filter="drop-shadow(0 0 20px rgba(255, 253, 240, 0.45))" />
-      
-      <!-- Crater Details (Soft overlay circles) -->
       <circle cx="455" cy="200" r="14" fill="#D6C58B" opacity="0.18" />
       <circle cx="465" cy="290" r="12" fill="#D6C58B" opacity="0.18" />
       <circle cx="435" cy="250" r="8" fill="#D6C58B" opacity="0.15" />
-      <circle cx="440" cy="215" r="5" fill="#D6C58B" opacity="0.15" />
     </g>
 
-    <!-- SPIDER-MAN SILHOUETTE & NEON SUIT PATHWAYS -->
-    <!-- Positioned sitting on the crescent at X=450, Y=240 -->
-    <g transform="translate(0, 0)">
+    <!-- HIGH-FIDELITY CROUCHING SPIDER-MAN -->
+    <!-- Positioned sitting inside the crescent of the moon -->
+    <g>
+      <!-- Web string shot from wrist directly to constellation core -->
+      <line x1="440" y1="210" x2="290" y2="160" stroke="#00F0FF" stroke-width="1.8" class="glow-cyan" />
+      <line x1="440" y1="210" x2="290" y2="160" stroke="#FFFFFF" stroke-width="2.2" class="web-mesh-pulse" />
       
-      <!-- Web string shot from wrist to center node -->
-      <!-- wrist is roughly at X=425, Y=222 -->
-      <line x1="424" y1="221" x2="290" y2="160" stroke="#00F0FF" stroke-width="1.8" class="glow-cyan" />
-      <line x1="424" y1="221" x2="290" y2="160" stroke="#FFFFFF" stroke-width="2" class="web-mesh-pulse" />
-      
-      <!-- Spidey Dark Chassis Body Shape -->
-      <!-- Low poly geometric stylized silhouette -->
-      <path d="
-        M 436,193 
-        C 434,180 448,180 446,193 
-        C 445,200 439,202 436,193 Z 
-        M 434,198 
-        L 421,210 L 413,222 L 424,223 
-        L 435,214 L 439,201 Z 
-        M 439,201 
-        Q 444,215 448,235 
-        L 462,238 L 472,216 L 479,219 L 468,244 
-        L 450,242 L 442,218 Z
-        M 448,235
-        Q 444,250 440,268
-        L 418,252 L 398,242 L 394,248 L 416,260 
-        L 438,276 L 445,274 L 448,237 Z
-        M 440,268
-        L 448,295 L 452,310 H 459 L 454,293 
-        L 446,270 Z
-      " fill="url(#spidey-suit-grad)" stroke="#110921" stroke-width="1.5" />
+      <!-- Right Arm (resting on knee) -->
+      <path d="M 488,212 Q 508,225 498,245" fill="none" stroke="#FF3B30" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" class="glow-red" />
+      <path d="M 488,212 Q 508,225 498,245" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" />
 
-      <!-- Glowing Suit Patterns (Red Web & Blue Accents) -->
-      <!-- Blue Leg and Back Highlights -->
-      <path d="M 444,215 Q 448,230 450,240" fill="none" stroke-width="1.2" class="suit-glow-b" />
-      <path d="M 440,268 L 448,295 L 452,310" fill="none" stroke-width="1.5" class="suit-glow-b" />
-      <path d="M 418,252 L 398,242" fill="none" stroke-width="1.2" class="suit-glow-b" />
+      <!-- Left Arm (shooting web to the left) -->
+      <path d="M 466,212 Q 436,212 438,209" fill="none" stroke="#FF3B30" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" class="glow-red" />
+      <path d="M 466,212 Q 436,212 438,209" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+
+      <!-- Left Leg (crouching, knee high) -->
+      <path d="M 466,242 C 442,242 432,255 436,275 C 442,295 464,295 472,282" fill="none" stroke="#0070F3" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 444,285 C 452,295 464,295 472,282" fill="none" stroke="#FF3B30" stroke-width="8.5" stroke-linecap="round" class="glow-red" />
+      <path d="M 466,242 C 442,242 432,255 436,275 C 442,295 464,295 472,282" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
+
+      <!-- Right Leg (bent outward, foot resting on moon edge) -->
+      <path d="M 488,242 C 512,242 522,255 518,275 C 512,295 490,295 482,282" fill="none" stroke="#0070F3" stroke-width="8.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M 510,285 C 502,295 490,295 482,282" fill="none" stroke="#FF3B30" stroke-width="8.5" stroke-linecap="round" class="glow-red" />
+      <path d="M 488,242 C 512,242 522,255 518,275 C 512,295 490,295 482,282" fill="none" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
+
+      <!-- Torso Body Shield (Blue and Red paneling) -->
+      <!-- Torso Base (Blue) -->
+      <path d="M 466,208 C 460,225 460,240 477,248 C 494,240 494,225 488,208 Z" fill="#0070F3" stroke="#000000" stroke-width="2" />
+      <!-- Torso Center Vest (Red Stark Panel) -->
+      <path d="M 470,208 C 471,222 473,230 477,230 C 481,230 483,222 484,208 Z" fill="#FF3B30" class="glow-red" />
+      <!-- Black spider logo on chest -->
+      <path d="M 477,215 Q 477,222 477,224 M 474,217 Q 477,219 480,217 M 474,222 Q 477,220 480,222" stroke="#000000" stroke-width="1.2" fill="none" />
+
+      <!-- Head (Perfect Spider-Man shape, red with eyes) -->
+      <path d="M 466,183 C 466,164 488,164 488,183 C 488,198 477,206 477,206 C 477,206 466,198 466,183 Z" fill="#FF3B30" stroke="#000000" stroke-width="2" class="glow-red" />
+      <!-- Spidey Mask Webbing -->
+      <path d="M 477,185 C 477,185 470,189 467,184 M 477,185 C 477,185 484,189 487,184 M 477,185 V 205 M 477,185 C 477,185 472,174 477,169" fill="none" stroke="#000000" stroke-width="0.8" opacity="0.6" />
       
-      <!-- Red Head, Chest and Arm Highlights -->
-      <path d="M 441,185 C 438,190 442,196 441,200" fill="none" stroke-width="1.2" class="suit-glow-r" />
-      <path d="M 434,198 L 421,210 L 413,222" fill="none" stroke-width="1.2" class="suit-glow-r" />
-      <path d="M 448,216 L 468,244" fill="none" stroke-width="1.2" class="suit-glow-r" />
-      <path d="M 439,201 Q 444,215 448,235" fill="none" stroke-width="1.5" class="suit-glow-r" />
-      
-      <!-- Spidey Glowing White Mask Eyes -->
-      <polygon points="426,189 432,192 433,188" fill="#FFFFFF" class="glow-white" />
-      <polygon points="436,189 441,192 440,188" fill="#FFFFFF" class="glow-white" />
+      <!-- Glowing Spidey Eyes -->
+      <path d="M 469,182 Q 473,178 475,185 Q 470,187 469,182 Z" fill="#FFFFFF" stroke="#000000" stroke-width="1.8" class="glow-white" />
+      <path d="M 485,182 Q 481,178 479,185 Q 484,187 485,182 Z" fill="#FFFFFF" stroke="#000000" stroke-width="1.8" class="glow-white" />
     </g>
   </g>
 
@@ -258,7 +242,6 @@
   
   <!-- Left Side: CV Personal Details & Stack Diagnostic -->
   <g fill="#00F0FF" font-family="'Fira Code', monospace" font-size="8.5" opacity="0.85" class="glow-cyan">
-    <!-- glitch text -->
     <text x="35" y="45" class="glitch" font-weight="700">ROSHAN_KUMAR_JHA // SYSTEMS_ACTIVE</text>
     <text x="35" y="60">ROLE_MODULE // FULL_STACK_ENGINEER</text>
     <text x="35" y="72">LOC.SIGNAL  // BENGALURU_INDIA</text>
@@ -282,7 +265,7 @@
     <text x="665" y="365">TENSION_LOAD // 14.2 KN</text>
     <text x="665" y="377">ATMOS_SHIELD // STABLE</text>
     <text x="665" y="389">NEBULA_TEMP  // -270 C</text>
-    <text x="665" y="401">MISSION_VAL  // CODE_OR_BUUST</text>
+    <text x="665" y="401">MISSION_VAL  // CODE_OR_BUST</text>
   </g>
 
   <!-- Bottom Console Status Ribbon -->

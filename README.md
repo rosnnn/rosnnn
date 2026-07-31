@@ -1,7 +1,7 @@
 <div align="center">
 
   <!-- Cosmic Spidey & Galaxy Constellation SVG Centerpiece -->
-  <img src="./spidey-galaxy.svg" width="620" alt="Roshan Kumar Jha's Cosmic Spider-Man Constellation Banner" />
+  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/spidey-galaxy.svg" width="620" alt="Roshan Kumar Jha's Cosmic Spider-Man Constellation Banner" />
 
   <br/><br/>
   
