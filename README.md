@@ -1,11 +1,11 @@
 <div align="center">
 
-  <!-- 3D Animated ASCII Text centerpiece -->
-  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/ascii_profile.gif" width="600" alt="Roshan Kumar Jha's 3D ASCII Text Overview" />
+  <!-- Bat-Halloween Animated SVG Centerpiece -->
+  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/bat-halloween.svg" width="600" alt="Roshan Kumar Jha's Animated Bat-Halloween Overview" />
 
   <br/><br/>
   
-  <h1>🌌 SYSTEM ACTIVE: ROSHAN KUMAR JHA</h1>
+  <h1>🦇 SYSTEM ACTIVE: ROSHAN KUMAR JHA</h1>
   
   <p>
     <i>Full-Stack Software Engineer &bull; Creative Coder &bull; Bengaluru, India</i>
