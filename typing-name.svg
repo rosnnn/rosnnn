@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 50" width="400" height="50">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&amp;display=swap');
+    .title-text {
+      font-family: 'Fira Code', monospace;
+      font-size: 28px;
+      font-weight: 700;
+      fill: #ffffff;
+      letter-spacing: 1px;
+    }
+    .cursor {
+      fill: #ff6188;
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      from, to { opacity: 0; }
+      50% { opacity: 1; }
+    }
+  </style>
+  <defs>
+    <clipPath id="typing-clip">
+      <rect x="0" y="0" height="50" width="0">
+        <animate 
+          attributeName="width" 
+          values="0; 0; 275; 275; 0; 0" 
+          keyTimes="0; 0.1; 0.4; 0.7; 0.9; 1" 
+          dur="6s" 
+          repeatCount="indefinite" />
+      </rect>
+    </clipPath>
+  </defs>
+  
+  <text x="40" y="35" class="title-text" clip-path="url(#typing-clip)">ROSHAN KUMAR JHA</text>
+  
+  <rect class="cursor" y="10" height="28" width="3">
+    <animateTransform 
+      attributeName="transform" 
+      type="translate" 
+      values="40 0; 40 0; 310 0; 310 0; 40 0; 40 0" 
+      keyTimes="0; 0.1; 0.4; 0.7; 0.9; 1" 
+      dur="6s" 
+      repeatCount="indefinite" />
+  </rect>
+</svg>

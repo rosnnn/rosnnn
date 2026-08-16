@@ -9,7 +9,16 @@
 
   <br/><br/>
 
-  <h1>🦇 ROSHAN KUMAR JHA</h1>
+  <!-- Animating typing name -->
+  <img src="typing-name.svg" width="380" alt="ROSHAN KUMAR JHA" />
+
+  <br/>
+
+  <!-- Small Bat SVG below name -->
+  <img src="bat-halloween.svg" height="30" alt="Bat" />
+
+  <br/><br/>
+
   <p><i>Full-Stack Software Engineer &bull; Creative Coder &bull; Bengaluru, India</i></p>
 
   <p>
