@@ -15,7 +15,7 @@
   <br/>
 
   <!-- Animating typing name -->
-  <img src="typing-name.svg" width="320" alt="ROSHAN KUMAR JHA" />
+  <img src="typing-name.svg" width="500" alt="ROSHAN KUMAR JHA" />
 
   <br/><br/>
 
