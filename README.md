@@ -1,7 +1,7 @@
 <div align="center">
 
-  <!-- Bat-Halloween Animated SVG Centerpiece -->
-  <img src="https://raw.githubusercontent.com/rosnnn/rosnnn/main/bat-halloween.svg" width="600" alt="Roshan Kumar Jha's Animated Bat-Halloween Overview" />
+  <!-- Batman Animated GIF Centerpiece -->
+  <img src="Batman.gif" width="600" alt="Roshan Kumar Jha's Batman Overview" />
 
   <br/><br/>
   
