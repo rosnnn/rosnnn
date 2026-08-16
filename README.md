@@ -12,7 +12,7 @@
   <!-- Small Bat SVG above name -->
   <img src="bat-halloween.svg" height="30" alt="Bat" />
 
-  <br/><br/>
+  <br/>
 
   <!-- Animating typing name -->
   <img src="typing-name.svg" width="450" alt="ROSHAN KUMAR JHA" />
