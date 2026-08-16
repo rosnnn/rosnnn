@@ -22,9 +22,9 @@
       <rect x="0" y="0" height="50" width="0">
         <animate 
           attributeName="width" 
-          values="0; 0; 330; 330; 0; 0" 
-          keyTimes="0; 0.05; 0.45; 0.75; 0.9; 1" 
-          dur="8s" 
+          values="0; 0; 420; 420; 0; 0" 
+          keyTimes="0; 0.05; 0.55; 0.80; 0.92; 1" 
+          dur="10s" 
           repeatCount="indefinite" />
       </rect>
     </clipPath>
@@ -36,9 +36,9 @@
     <animateTransform 
       attributeName="transform" 
       type="translate" 
-      values="40 0; 40 0; 335 0; 335 0; 40 0; 40 0" 
-      keyTimes="0; 0.05; 0.45; 0.75; 0.9; 1" 
-      dur="8s" 
+      values="40 0; 40 0; 375 0; 375 0; 40 0; 40 0" 
+      keyTimes="0; 0.05; 0.55; 0.80; 0.92; 1" 
+      dur="10s" 
       repeatCount="indefinite" />
   </rect>
 </svg>
