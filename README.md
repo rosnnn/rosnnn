@@ -10,7 +10,7 @@
   <br/><br/>
 
   <!-- Small Bat SVG above name -->
-  <img src="bat-halloween.svg" height="30" alt="Bat" />
+  <img src="bat-halloween.svg" height="50" alt="Bat" />
 
   <br/>
 
