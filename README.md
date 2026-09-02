@@ -96,3 +96,9 @@ Status: Online
   [+] Last Transmission: "It's not who I am underneath, but what I do that defines me."
   ────────────────────────────────────────────────────────────────
 ```
+
+<br/>
+
+<div align="center">
+  <img src="alien.svg" width="350" alt="Alien" />
+</div>
